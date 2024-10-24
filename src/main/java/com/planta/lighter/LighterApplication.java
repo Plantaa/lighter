@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.planta.lighter.dao.EmployeeRepository;
-import com.planta.lighter.dao.StudentDAO;
+import com.planta.lighter.dao.StudentRepository;
 import com.planta.lighter.entity.Employee;
 import com.planta.lighter.entity.Student;
 
@@ -18,13 +18,13 @@ public class LighterApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(StudentDAO studentDAO, EmployeeRepository employeeRepository) {
+	public CommandLineRunner commandLineRunner(StudentRepository studentRepository, EmployeeRepository employeeRepository) {
 		return runner -> {
-			createMultipleStudents(studentDAO, employeeRepository);
+			createMultipleStudents(studentRepository, employeeRepository);
 		};
 	}
 
-	private void createMultipleStudents(StudentDAO studentDAO, EmployeeRepository employeeRepository) {
+	private void createMultipleStudents(StudentRepository studentRepository, EmployeeRepository employeeRepository) {
 
 		// create multiple students
 		System.out.println("Creating 3 student objects ...");
@@ -34,9 +34,9 @@ public class LighterApplication {
 
 		// save the student objects
 		System.out.println("Saving the students ...");
-		studentDAO.save(tempStudent1);
-		studentDAO.save(tempStudent2);
-		studentDAO.save(tempStudent3);
+		studentRepository.save(tempStudent1);
+		studentRepository.save(tempStudent2);
+		studentRepository.save(tempStudent3);
 
 		// create multiple employees
 		System.out.println("Creating 3 employees objects ...");
