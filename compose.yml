@@ -40,6 +40,23 @@ services:
         condition: service_healthy
       test-container:
         condition: service_completed_successfully
+  
+  spring-app-dev:
+    image: lighter-dev:0.0.1-SNAPSHOT
+    container_name: spring-app-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src/main:/app/src/main
+      - ./src/test:/app/src/test
+      - ./target:/app/target
+    depends_on:
+      spring-mysql:
+        condition: service_healthy
 
 volumes:
   data:
