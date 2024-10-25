@@ -1,4 +1,4 @@
-package com.planta.lighter.controller;
+package com.planta.lighter.controller.rest;
 
 import java.util.List;
 
