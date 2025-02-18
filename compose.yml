@@ -2,10 +2,14 @@ services:
   spring-mysql:
     image: mysql:latest
     container_name: spring-mysql
-    env_file:
-      - config.env
     ports:
-      - 3306:3306
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+      - MYSQL_DATABASE=example
     volumes:
       - data:/data/db
     healthcheck:
