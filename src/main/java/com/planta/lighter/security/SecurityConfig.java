@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+    UserDetailsManager userDetailsManager(DataSource dataSource) {
 
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
@@ -32,7 +32,7 @@ public class SecurityConfig {
     // }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configurer -> configurer
                 .requestMatchers("/").hasRole("EMPLOYEE")
